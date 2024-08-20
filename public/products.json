@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Front Bumper",
+    "price": 150.0,
+    "image_url": "https://sc04.alicdn.com/kf/Hb8304c32ac724d0c8e561d27086d485cn.png"
+  },
+  {
+    "id": 2,
+    "title": "Rear Spoiler",
+    "price": 200.0,
+    "image_url": "https://m.media-amazon.com/images/I/618IXgTYBzL._AC_SL1500_.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Side Skirts",
+    "price": 120.0,
+    "image_url": "https://www.carid.com/images/pages/custom-fenders/red-bmw-custom-fender.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Hood",
+    "price": 250.0,
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt9CJW-7uvwuyE2YTCwFuYfyMsBseic3DODQ&s"
+  },
+  {
+    "id": 5,
+    "title": "Fender",
+    "price": 180.0,
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIUJFKiMNaukqJYOVcAMqRyZTboxDW3uwSYA&s"
+  },
+  {
+    "id": 6,
+    "title": "Grille",
+    "price": 100.0,
+    "image_url": "https://i.ebayimg.com/images/g/TmwAAOSwNLRjOGx0/s-l1200.jpg"
+  }
+]
