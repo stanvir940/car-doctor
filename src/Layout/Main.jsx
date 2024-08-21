@@ -7,9 +7,13 @@ import Footer from "../pages/Footer/Footer";
 const Main = () => {
   return (
     <div>
-      <Navbar></Navbar>
-      <Outlet></Outlet>
-      <Footer></Footer>
+      <div className="max-w-7xl mx-auto">
+        <Navbar></Navbar>
+        <Outlet></Outlet>
+      </div>
+      <div className="w-full mx-auto">
+        <Footer></Footer>
+      </div>
     </div>
   );
 };

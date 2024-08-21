@@ -2,9 +2,9 @@ import React from "react";
 import Logo from "../../assets/logo.svg";
 const Footer = () => {
   return (
-    <footer className="footer bg-gray-100 text-gray-900 p-10">
+    <footer className="footer bg-black text-white p-4 md:p-10 md:px-24">
       <aside>
-        <img src={Logo} alt="" />
+        <img src={Logo} alt="" className="text-white" />
         <p>
           Tanvir Industries Ltd.
           <br />
