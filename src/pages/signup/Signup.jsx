@@ -1,21 +1,20 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import img from "../../../src/assets/images/login/login.svg";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
-const Login = () => {
-  const { signIn } = useContext(AuthContext);
 
-  const handleLogin = (e) => {
+const Signup = () => {
+  const { createUser } = useContext(AuthContext);
+  const handleSignup = (e) => {
     e.preventDefault();
 
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    signIn(email, password)
+    createUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log("successful", user);
       })
       .catch((error) => console.log(error));
   };
@@ -23,15 +22,33 @@ const Login = () => {
     <div className="hero bg-white  min-h-screen">
       <div className="hero-content flex-col lg:flex-row space-y-4">
         <div className="text-center lg:text-left text-black">
-          <div className="text-center w-full px-6">
+          <div className="text-center w-1/2">
             <img src={img} alt="" />
           </div>
+          <h1 className="text-5xl font-bold text-orange-600">Login now!</h1>
+          <p className="py-6">
+            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
+            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
+            a id nisi.
+          </p>
         </div>
         <div className="card bg-[#e8e8e8] text-black w-full max-w-sm shrink-0 shadow-2xl">
           <div className=" px-4 pt-4 font-bold text-2xl w-full text-center">
-            <h3>Login</h3>
+            <h3>Signup</h3>
           </div>
-          <form onSubmit={handleLogin} className="card-body text-black">
+          <form onSubmit={handleSignup} className="card-body text-black">
+            <div className="form-control text-red-700">
+              <label className="label">
+                <span className="label-text text-black">Name</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Name"
+                name="name"
+                className="input input-bordered text-black bg-gray-300"
+                required
+              />
+            </div>
             <div className="form-control text-red-700">
               <label className="label">
                 <span className="label-text text-black">Email</span>
@@ -70,9 +87,9 @@ const Login = () => {
           </form>
           <div className="px-8 pb-4  w-full text-center">
             <p>
-              Already have any account?{" "}
-              <Link to="/signup" className="font-bold text-orange-600">
-                Login
+              Don't have any account?{" "}
+              <Link to="/login" className="font-bold text-orange-600">
+                Sign Up
               </Link>{" "}
             </p>
           </div>
@@ -82,4 +99,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;

@@ -21,7 +21,10 @@ const Teams = () => {
       <div className="mt-12 w-full ">
         <div className="carousel carousel-end rounded-box">
           {teams.map((data, idex) => (
-            <div className="carousel-item p-6 flex-col space-y-2 my-3 hover:scale-105 hover:bg-slate-50">
+            <div
+              className="carousel-item p-6 flex-col space-y-2 my-3 hover:scale-105 hover:bg-slate-50"
+              key={idex}
+            >
               <div>
                 <img
                   src={data.image_url}
