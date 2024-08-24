@@ -4,9 +4,11 @@ import Product from "./Product";
 const Products = () => {
   const [products, setProduct] = useState([]);
   useEffect(() => {
-    fetch("products.json")
+    fetch("http://localhost:5001/services")
       .then((res) => res.json())
-      .then((data) => setProduct(data));
+      .then((data) => {
+        setProduct(data);
+      });
   }, []);
   return (
     <div className=" text-center flex justify-center items-center flex-col my-32 space-y-12">
