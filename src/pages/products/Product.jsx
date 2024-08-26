@@ -40,7 +40,7 @@ const Product = ({ products }) => {
         <h3 className="font-bold text-xl text-black">{title} </h3>
         <p className="font-bold text-orange-500">${price} </p>
         <div>
-          <Link to={`/checkout/${_id}`}>
+          <Link to={`/bookservice/${_id}`}>
             <button className="btn btn-primary w-full text-white hover:scale-105">
               Book Now
             </button>

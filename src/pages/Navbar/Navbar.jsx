@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+  const nav = [{ to: "/", name: "home" }];
   return (
     <div className="navbar bg-white text-gray-800 h-24 ">
       <div className="navbar-start">
@@ -28,21 +37,20 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
-              <a>Home</a>
+              <Link to={"/"}>Home</Link>{" "}
             </li>
             <li>
-              <a>About</a>
+              {user?.email ? (
+                <>
+                  {" "}
+                  <button onClick={handleLogout}>Sign out</button>
+                </>
+              ) : (
+                <Link to={"/login"}>Login</Link>
+              )}
             </li>
             <li>
-              <a>Services</a>
-            </li>
-
-            <li>
-              <a>Blog</a>
-            </li>
-
-            <li>
-              <a>Contact</a>
+              {user?.email ? <Link to={"/bookings"}>My Bookings</Link> : ""}
             </li>
           </ul>
         </div>
@@ -53,21 +61,20 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a>Home</a>
+            <Link to={"/"}>Home</Link>{" "}
           </li>
           <li>
-            <a>About</a>
+            {user?.email ? (
+              <>
+                {" "}
+                <button onClick={handleLogout}>Sign out</button>
+              </>
+            ) : (
+              <Link to={"/login"}>Login</Link>
+            )}
           </li>
           <li>
-            <a>Services</a>
-          </li>
-
-          <li>
-            <a>Blog</a>
-          </li>
-
-          <li>
-            <a>Contact</a>
+            {user?.email ? <Link to={"/bookings"}>My Bookings</Link> : ""}
           </li>
         </ul>
       </div>

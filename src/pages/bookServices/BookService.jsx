@@ -2,6 +2,7 @@ import { useContext } from "react";
 import Banner from "../layout/Banner";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const BookService = () => {
   const service = useLoaderData();
@@ -24,7 +25,7 @@ const BookService = () => {
       service: title,
       service_id: _id,
     };
-    console.log("hello");
+
     console.log(booking);
 
     fetch("http://localhost:5001/bookings", {
@@ -37,6 +38,15 @@ const BookService = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        if (data.acknowledged) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Successfully Added",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
       });
   };
   return (
@@ -44,11 +54,10 @@ const BookService = () => {
       <h1>Book Service</h1>
 
       <div>
-        <Banner></Banner>
         <div>
           <h1>title: {title} </h1>
         </div>
-        <div className="w-full h-96 my-10 space-y-6 border py-10 bg-slate-200">
+        <div className="w-full h-96 my-10 space-y-6 border py-10 bg-lime-400">
           <h1 className="my-4 text-3xl font-bold text-center w-full text-black">
             Bookings Page
           </h1>

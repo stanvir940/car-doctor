@@ -2,6 +2,7 @@ import { useContext } from "react";
 import img from "../../../src/assets/images/login/login.svg";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Signup = () => {
   const { createUser } = useContext(AuthContext);
@@ -15,8 +16,9 @@ const Signup = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
+        Swal.fire("You have created an account");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => Swal.fire("Something Error Occured " + error));
   };
   return (
     <div className="hero bg-white  min-h-screen">
@@ -87,9 +89,9 @@ const Signup = () => {
           </form>
           <div className="px-8 pb-4  w-full text-center">
             <p>
-              Don't have any account?{" "}
+              Already have any account?{" "}
               <Link to="/login" className="font-bold text-orange-600">
-                Sign Up
+                Login
               </Link>{" "}
             </p>
           </div>

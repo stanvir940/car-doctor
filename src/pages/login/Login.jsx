@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import img from "../../../src/assets/images/login/login.svg";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 const Login = () => {
   const { signIn } = useContext(AuthContext);
 
@@ -15,9 +16,10 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const user = result.user;
+        Swal.fire("You have logged in!");
         console.log("successful", user);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => Swal.fire("Something error occured " + error));
   };
   return (
     <div className="hero bg-white  min-h-screen">
@@ -70,9 +72,9 @@ const Login = () => {
           </form>
           <div className="px-8 pb-4  w-full text-center">
             <p>
-              Already have any account?{" "}
+              Don't have any account?{" "}
               <Link to="/signup" className="font-bold text-orange-600">
-                Login
+                Sign Up
               </Link>{" "}
             </p>
           </div>
