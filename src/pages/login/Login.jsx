@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
 import img from "../../../src/assets/images/login/login.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 const Login = () => {
   const { signIn } = useContext(AuthContext);
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -17,6 +20,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         Swal.fire("You have logged in!");
+        navigate(location?.state ? location?.state : "/");
         console.log("successful", user);
       })
       .catch((error) => Swal.fire("Something error occured " + error));
