@@ -3,6 +3,7 @@ import img from "../../../src/assets/images/login/login.svg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import axios from "axios";
 const Login = () => {
   const { signIn } = useContext(AuthContext);
 
@@ -20,7 +21,19 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         Swal.fire("You have logged in!");
-        navigate(location?.state ? location?.state : "/");
+        const log_user = { email };
+        axios
+          .post("http://localhost:5001/jwt", log_user, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.success) {
+              navigate(location?.state ? location?.state : "/");
+            }
+          });
+
+        // navigate(location?.state ? location?.state : "/");
         console.log("successful", user);
       })
       .catch((error) => Swal.fire("Something error occured " + error));
